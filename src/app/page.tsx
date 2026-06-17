@@ -2,7 +2,8 @@ import Link from 'next/link'
 import SectionHeading from '@/components/SectionHeading'
 import ScrollReveal from '@/components/ScrollReveal'
 import Marker from '@/components/Marker'
-import ProductSpinner from '@/components/ProductSpinner'
+import ProductShowcase from '@/components/ProductShowcase'
+import HeroProduct from '@/components/HeroProduct'
 
 const journeySteps = [
   {
@@ -51,12 +52,12 @@ const attributes = [
 ]
 
 const portfolio = [
-  { title: 'ชิ้นส่วนเครื่องจักร CNC', category: 'OEM Manufacturing' },
-  { title: 'อุปกรณ์จับยึดเฉพาะงาน', category: 'Custom Production' },
-  { title: 'ต้นแบบฝาครอบอลูมิเนียม', category: 'Prototyping' },
-  { title: 'แผงควบคุมสแตนเลส', category: 'OEM Manufacturing' },
-  { title: 'โครงสร้างรองรับสายพาน', category: 'Custom Production' },
-  { title: 'ชุดทดสอบคุณภาพ', category: 'Quality Control' },
+  { title: 'ชิ้นส่วนเครื่องจักร CNC', category: 'OEM Manufacturing', image: '/images/oem-cnc.png' },
+  { title: 'อุปกรณ์จับยึดเฉพาะงาน', category: 'Custom Production', image: '/images/custom-cnc-milling.png' },
+  { title: 'ต้นแบบฝาครอบอลูมิเนียม', category: 'Prototyping', image: '/images/quality-inspector.png' },
+  { title: 'แผงควบคุมสแตนเลส', category: 'OEM Manufacturing', image: '/images/welding.png' },
+  { title: 'โครงสร้างรองรับสายพาน', category: 'Custom Production', image: '/images/welding-sparks.png' },
+  { title: 'ชุดทดสอบคุณภาพ', category: 'Quality Control', image: '/images/quality-control.png' },
 ]
 
 const services = [
@@ -109,8 +110,18 @@ export default function HomePage() {
           }}
         />
 
-        <div className="container-fc" style={{ position: 'relative', zIndex: 1 }}>
-          <div style={{ maxWidth: '760px' }}>
+        <div
+          className="container-fc hero-grid-layout"
+          style={{
+            position: 'relative',
+            zIndex: 1,
+            display: 'grid',
+            gridTemplateColumns: '1fr',
+            gap: 'var(--space-7)',
+            alignItems: 'center',
+          }}
+        >
+          <div className="hero-text-col" style={{ maxWidth: '760px' }}>
             <p
               className="hero-fade-up"
               style={{
@@ -192,6 +203,8 @@ export default function HomePage() {
               </Link>
             </div>
           </div>
+
+          <HeroProduct />
         </div>
       </section>
 
@@ -399,10 +412,9 @@ export default function HomePage() {
 
           <ScrollReveal delay={1}>
             <div
-              className="card md:grid-cols-[auto_1fr]"
+              className="card grid-cols-1 md:grid-cols-[1fr_auto]"
               style={{
                 display: 'grid',
-                gridTemplateColumns: '1fr',
                 gap: 'var(--space-5)',
                 alignItems: 'center',
                 marginTop: 'var(--space-7)',
@@ -411,7 +423,6 @@ export default function HomePage() {
                 padding: '2.5rem',
               }}
             >
-              <ProductSpinner label="ตัวอย่างชิ้นงาน CNC" />
               <div>
                 <p
                   style={{
@@ -424,17 +435,17 @@ export default function HomePage() {
                     marginBottom: 'var(--space-2)',
                   }}
                 >
-                  มุมมอง 360°
+                  ตัวอย่างผลงาน
                 </p>
                 <h3
                   style={{
-                    fontSize: 'var(--fs-h3)',
+                    fontSize: 'clamp(1.75rem, 4vw, var(--fs-h2))',
                     fontWeight: 'var(--fw-bold)',
                     color: 'var(--text-on-dark)',
                     marginBottom: 'var(--space-2)',
                   }}
                 >
-                  สำรวจรายละเอียดได้ทุกมุม
+                  คุณภาพที่จับต้องได้
                 </h3>
                 <p
                   style={{
@@ -443,10 +454,11 @@ export default function HomePage() {
                     lineHeight: 1.7,
                   }}
                 >
-                  ลากเพื่อหมุนดูตัวอย่างชิ้นงานแบบ 360 องศา
-                  (ตัวอย่างสำหรับสาธิตฟีเจอร์ — รูปจริงของผลงานพร้อมเร็วๆ นี้)
+                  ตัวอย่างชิ้นงานจากกระบวนการผลิตของเรา
+                  (รูปจริงของผลงานพร้อมเร็วๆ นี้)
                 </p>
               </div>
+              <ProductShowcase label="ตัวอย่างชิ้นงาน CNC" />
             </div>
           </ScrollReveal>
 
@@ -461,39 +473,24 @@ export default function HomePage() {
             {portfolio.map((item, i) => (
               <ScrollReveal key={item.title} delay={(i % 5) as 0 | 1 | 2 | 3 | 4 | 5}>
                 <div className="gallery-item">
-                  <svg
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
                     className="gallery-item-pattern"
-                    width="100%"
-                    height="100%"
-                    viewBox="0 0 200 150"
-                    preserveAspectRatio="xMidYMid slice"
-                    aria-hidden="true"
-                  >
-                    <rect width="200" height="150" fill="var(--color-deep-navy)" />
-                    <g stroke="var(--color-charcoal)" strokeWidth="1">
-                      {Array.from({ length: 9 }).map((_, n) => (
-                        <line key={`v${n}`} x1={n * 25} y1="0" x2={n * 25} y2="150" />
-                      ))}
-                      {Array.from({ length: 7 }).map((_, n) => (
-                        <line key={`h${n}`} x1="0" y1={n * 25} x2="200" y2={n * 25} />
-                      ))}
-                    </g>
-                    {i % 3 === 0 && (
-                      <circle cx="100" cy="75" r="38" fill="none" stroke="var(--color-orange)" strokeWidth="2" opacity="0.7" />
-                    )}
-                    {i % 3 === 1 && (
-                      <rect x="55" y="37" width="90" height="76" fill="none" stroke="var(--color-orange)" strokeWidth="2" opacity="0.7" />
-                    )}
-                    {i % 3 === 2 && (
-                      <path d="M55 113 L100 37 L145 113 Z" fill="none" stroke="var(--color-orange)" strokeWidth="2" opacity="0.7" />
-                    )}
-                  </svg>
+                    src={item.image}
+                    alt={item.title}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      filter: 'grayscale(0.15) contrast(1.05)',
+                    }}
+                  />
                   <div className="gallery-item-overlay">
                     <p
                       style={{
                         fontFamily: 'var(--font-utility)',
                         fontSize: 'var(--fs-caption)',
-                        fontWeight: 'var(--fw-medium)',
+                        fontWeight: 'var(--fw-bold)',
                         letterSpacing: 'var(--tracking-wide)',
                         textTransform: 'uppercase',
                         color: 'var(--accent)',
@@ -505,7 +502,7 @@ export default function HomePage() {
                     <p
                       style={{
                         fontSize: 'var(--fs-body)',
-                        fontWeight: 'var(--fw-medium)',
+                        fontWeight: 'var(--fw-bold)',
                         color: 'var(--text-on-dark)',
                       }}
                     >

@@ -442,13 +442,14 @@
     flex-direction: column;
     justify-content: flex-end;
     padding: 1.25rem;
-    background: linear-gradient(to top, rgba(13, 24, 42, 0.85), transparent 60%);
-    opacity: 0;
+    background: linear-gradient(to top, rgba(13, 24, 42, 0.92), rgba(13, 24, 42, 0.35) 55%, transparent 100%);
+    opacity: 1;
     transition: opacity var(--dur-base) var(--ease-out);
   }
 
   .gallery-item:hover .gallery-item-overlay {
     opacity: 1;
+    background: linear-gradient(to top, rgba(13, 24, 42, 0.96), rgba(13, 24, 42, 0.5) 60%, transparent 100%);
   }
 
   /* Hero entrance */
@@ -520,65 +521,84 @@
     animation: grid-drift 18s linear infinite;
   }
 
-  /* 360 product spinner */
-  .spinner-stage {
+  /* Hero responsive layout */
+  .hero-product-col {
+    order: -1;
+  }
+
+  @media (min-width: 768px) {
+    .hero-grid-layout {
+      grid-template-columns: 1fr 320px !important;
+    }
+    .hero-product-col {
+      order: 0;
+    }
+  }
+
+  /* Service icon hover */
+  .service-icon {
+    display: inline-flex;
+    transition: transform var(--dur-base) var(--ease-out);
+  }
+
+  .card:hover .service-icon {
+    transform: scale(1.12) rotate(-4deg);
+  }
+
+  /* Process table row hover */
+  .process-row {
+    transition: background var(--dur-fast) var(--ease-out);
+  }
+
+  .process-row:hover {
+    background: var(--bg-subtle) !important;
+  }
+
+  /* Hero product showcase */
+  @keyframes product-spin {
+    from { transform: rotateY(0deg); }
+    to { transform: rotateY(360deg); }
+  }
+
+  @keyframes product-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+  }
+
+  .hero-product-wrap {
     position: relative;
-    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .spinner-drum {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-  }
-
-  .spinner-segment {
+  .hero-product-glow {
     position: absolute;
-    top: 0;
-    left: calc(50% - 11px);
-    width: 22px;
-    height: 100%;
-    transform-origin: center center;
-    backface-visibility: hidden;
-  }
-
-  .spinner-band {
-    position: absolute;
-    top: 46%;
+    bottom: 6%;
     left: 50%;
-    width: 160px;
-    height: 36px;
-    margin-left: -80px;
-    margin-top: -18px;
-    background: var(--accent);
-    border-radius: 4px;
-    transform: translateZ(71px);
+    width: 70%;
+    height: 60px;
+    transform: translateX(-50%);
+    background: radial-gradient(closest-side, rgba(255, 106, 0, 0.55), transparent);
+    filter: blur(4px);
+    pointer-events: none;
   }
 
-  .spinner-cap {
-    position: absolute;
-    left: 50%;
-    width: 140px;
-    height: 140px;
-    margin-left: -70px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 35% 35%, var(--color-steel), var(--color-charcoal));
+  .hero-product-float {
+    animation: product-float 4.5s var(--ease-out) infinite;
+  }
+
+  .hero-product-spin {
+    animation: product-spin 9s linear infinite;
     transform-style: preserve-3d;
+    filter: drop-shadow(0 24px 32px rgba(0, 0, 0, 0.45));
   }
 
-  .spinner-cap-top {
-    top: -70px;
-    transform: rotateX(90deg) translateZ(70px);
-  }
-
-  .spinner-cap-bottom {
-    bottom: -70px;
-    transform: rotateX(90deg) translateZ(-250px);
-  }
-
-  .spinner-stage.dragging .spinner-drum {
-    transition: none;
+  @media (prefers-reduced-motion: reduce) {
+    .hero-product-spin,
+    .hero-product-float {
+      animation: none !important;
+    }
   }
 
   /* Hero marker pulse */

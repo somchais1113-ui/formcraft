@@ -13,6 +13,7 @@ const services = [
   {
     title: 'OEM Manufacturing',
     desc: 'ผลิตตามแบบและสเปกของคุณ ควบคุมคุณภาพทุกขั้นตอน ได้ชิ้นงานที่ตรงตามที่คุณต้องการ ทุกครั้ง',
+    image: '/images/oem-cnc.png',
     icon: (
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false">
         <rect x="4" y="12" width="24" height="16" rx="1" stroke="currentColor" strokeWidth="1.5" />
@@ -25,6 +26,7 @@ const services = [
   {
     title: 'Custom Production',
     desc: 'ออกแบบและผลิตงานเฉพาะ ตอบโจทย์เฉพาะของแต่ละองค์กร เราร่วมงานกับทีมของคุณตั้งแต่ขั้นออกแบบ',
+    image: '/images/custom-cnc-milling.png',
     icon: (
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false">
         <path d="M22 6l4 4-14 14H8v-4L22 6z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
@@ -36,6 +38,7 @@ const services = [
   {
     title: 'Prototyping',
     desc: 'สร้างต้นแบบเพื่อทดสอบก่อนผลิตจริง ลดความเสี่ยง ปรับได้จนกว่าจะได้ชิ้นที่สมบูรณ์',
+    image: '/images/quality-inspector.png',
     icon: (
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false">
         <path d="M16 4l10 6v12l-10 6L6 22V10l10-6z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
@@ -46,6 +49,7 @@ const services = [
   {
     title: 'Quality Control',
     desc: 'ตรวจสอบมาตรฐานทุกชิ้น เป๊ะเสมอ ไม่มีตก เอกสาร QC ครบถ้วนทุกล็อต',
+    image: '/images/quality-control.png',
     icon: (
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false">
         <path d="M16 4l9 4v9c0 5-4 9-9 11-5-2-9-6-9-11V8l9-4z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
@@ -96,10 +100,11 @@ export default function ServicePage() {
       >
         <div className="container-fc">
           <p
+            className="hero-fade-up"
             style={{
               fontFamily: 'var(--font-utility)',
               fontSize: 'var(--fs-caption)',
-              fontWeight: 'var(--fw-medium)',
+              fontWeight: 'var(--fw-bold)',
               letterSpacing: 'var(--tracking-wide)',
               textTransform: 'uppercase',
               color: 'var(--accent)',
@@ -109,18 +114,23 @@ export default function ServicePage() {
             บริการ
           </p>
           <h1
+            className="hero-fade-up hero-fade-up-delay-1"
             style={{
-              fontSize: 'clamp(2rem, 5vw, var(--fs-h1))',
+              fontSize: 'clamp(2.25rem, 6vw, 3.75rem)',
               fontWeight: 'var(--fw-bold)',
+              textTransform: 'uppercase',
               color: 'var(--text-on-dark)',
-              lineHeight: 1.15,
+              lineHeight: 1.05,
+              letterSpacing: '-0.01em',
               marginBottom: 'var(--space-4)',
               maxWidth: '640px',
             }}
           >
             สิ่งที่เราทำได้
           </h1>
-          <Marker />
+          <div className="hero-fade-up hero-fade-up-delay-2 hero-marker-pulse">
+            <Marker />
+          </div>
         </div>
       </section>
 
@@ -143,6 +153,27 @@ export default function ServicePage() {
               <ScrollReveal key={svc.title} delay={(i % 5) as 0 | 1 | 2 | 3 | 4 | 5}>
                 <article className="card" style={{ height: '100%' }}>
                   <div
+                    style={{
+                      margin: '-2rem -2rem var(--space-4)',
+                      aspectRatio: '16 / 10',
+                      overflow: 'hidden',
+                      borderBottom: '1px solid var(--border-hairline)',
+                    }}
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={svc.image}
+                      alt={svc.title}
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        filter: 'grayscale(0.15) contrast(1.05)',
+                      }}
+                    />
+                  </div>
+                  <div
+                    className="service-icon"
                     style={{
                       color: 'var(--accent)',
                       marginBottom: 'var(--space-4)',
@@ -236,6 +267,7 @@ export default function ServicePage() {
                   {processRows.map((row, i) => (
                     <tr
                       key={row.step}
+                      className="process-row"
                       style={{
                         background: i % 2 === 0 ? 'var(--bg-page)' : 'var(--bg-subtle)',
                         borderTop: '1px solid var(--border-hairline)',

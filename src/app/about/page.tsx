@@ -67,10 +67,11 @@ export default function AboutPage() {
       >
         <div className="container-fc">
           <p
+            className="hero-fade-up"
             style={{
               fontFamily: 'var(--font-utility)',
               fontSize: 'var(--fs-caption)',
-              fontWeight: 'var(--fw-medium)',
+              fontWeight: 'var(--fw-bold)',
               letterSpacing: 'var(--tracking-wide)',
               textTransform: 'uppercase',
               color: 'var(--accent)',
@@ -80,18 +81,23 @@ export default function AboutPage() {
             เกี่ยวกับเรา
           </p>
           <h1
+            className="hero-fade-up hero-fade-up-delay-1"
             style={{
-              fontSize: 'clamp(2rem, 5vw, var(--fs-h1))',
+              fontSize: 'clamp(2.25rem, 6vw, 4rem)',
               fontWeight: 'var(--fw-bold)',
+              textTransform: 'uppercase',
               color: 'var(--text-on-dark)',
-              lineHeight: 1.15,
+              lineHeight: 1.05,
+              letterSpacing: '-0.01em',
               marginBottom: 'var(--space-4)',
               maxWidth: '700px',
             }}
           >
             ความไว้ใจ<br />คือจุดเริ่มของทุกงาน
           </h1>
-          <Marker />
+          <div className="hero-fade-up hero-fade-up-delay-2 hero-marker-pulse">
+            <Marker />
+          </div>
         </div>
       </section>
 
