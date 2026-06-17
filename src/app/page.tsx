@@ -2,6 +2,7 @@ import Link from 'next/link'
 import SectionHeading from '@/components/SectionHeading'
 import ScrollReveal from '@/components/ScrollReveal'
 import Marker from '@/components/Marker'
+import ProductSpinner from '@/components/ProductSpinner'
 
 const journeySteps = [
   {
@@ -141,11 +142,12 @@ export default function HomePage() {
             <h1
               className="hero-fade-up hero-fade-up-delay-1"
               style={{
-                fontSize: 'clamp(2.25rem, 6vw, 4rem)',
-                lineHeight: 1.05,
+                fontSize: 'clamp(2.75rem, 8vw, 5rem)',
+                lineHeight: 0.98,
                 fontWeight: 'var(--fw-bold)',
                 color: 'var(--text-on-dark)',
-                letterSpacing: '-0.01em',
+                letterSpacing: '-0.02em',
+                textTransform: 'uppercase',
                 marginBottom: 'var(--space-3)',
               }}
             >
@@ -393,6 +395,59 @@ export default function HomePage() {
         <div className="container-fc">
           <ScrollReveal>
             <SectionHeading eyebrow="ผลงานของเรา" title="งานที่เราภูมิใจนำเสนอ" />
+          </ScrollReveal>
+
+          <ScrollReveal delay={1}>
+            <div
+              className="card md:grid-cols-[auto_1fr]"
+              style={{
+                display: 'grid',
+                gridTemplateColumns: '1fr',
+                gap: 'var(--space-5)',
+                alignItems: 'center',
+                marginTop: 'var(--space-7)',
+                background: 'var(--bg-dark)',
+                borderColor: 'var(--color-charcoal)',
+                padding: '2.5rem',
+              }}
+            >
+              <ProductSpinner label="ตัวอย่างชิ้นงาน CNC" />
+              <div>
+                <p
+                  style={{
+                    fontFamily: 'var(--font-utility)',
+                    fontSize: 'var(--fs-caption)',
+                    fontWeight: 'var(--fw-bold)',
+                    letterSpacing: 'var(--tracking-wide)',
+                    textTransform: 'uppercase',
+                    color: 'var(--accent)',
+                    marginBottom: 'var(--space-2)',
+                  }}
+                >
+                  มุมมอง 360°
+                </p>
+                <h3
+                  style={{
+                    fontSize: 'var(--fs-h3)',
+                    fontWeight: 'var(--fw-bold)',
+                    color: 'var(--text-on-dark)',
+                    marginBottom: 'var(--space-2)',
+                  }}
+                >
+                  สำรวจรายละเอียดได้ทุกมุม
+                </h3>
+                <p
+                  style={{
+                    fontSize: 'var(--fs-body)',
+                    color: 'var(--color-blue-gray)',
+                    lineHeight: 1.7,
+                  }}
+                >
+                  ลากเพื่อหมุนดูตัวอย่างชิ้นงานแบบ 360 องศา
+                  (ตัวอย่างสำหรับสาธิตฟีเจอร์ — รูปจริงของผลงานพร้อมเร็วๆ นี้)
+                </p>
+              </div>
+            </div>
           </ScrollReveal>
 
           <div
