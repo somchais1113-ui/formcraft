@@ -1,0 +1,366 @@
+@import "tailwindcss";
+
+/* ============================================================
+   FORMCRAFT — Design Tokens
+   ============================================================ */
+:root {
+  /* Primary Colors */
+  --color-white:        #FFFFFF;
+  --color-light-gray:   #F2F4F7;
+  --color-cool-gray:    #D6D9D0;
+  --color-slate:        #60666F;
+  --color-deep-navy:    #0D182A;
+  --color-orange:       #FF6A00;
+
+  /* Secondary Colors */
+  --color-warm-gray:    #8A8F98;
+  --color-blue-gray:    #A9B2BE;
+  --color-steel:        #C7CCD3;
+  --color-charcoal:     #262A30;
+  --color-orange-gold:  #FF9833;
+
+  /* Semantic roles */
+  --bg-page:            var(--color-white);
+  --bg-subtle:          var(--color-light-gray);
+  --bg-dark:            var(--color-deep-navy);
+  --text-primary:       var(--color-deep-navy);
+  --text-secondary:     var(--color-slate);
+  --text-on-dark:       var(--color-white);
+  --border-hairline:    var(--color-cool-gray);
+  --accent:             var(--color-orange);
+  --accent-hover:       #E55F00;
+
+  /* Typography */
+  --font-display:  'Manrope', 'IBM Plex Sans Thai', system-ui, sans-serif;
+  --font-body:     'Manrope', 'IBM Plex Sans Thai', system-ui, sans-serif;
+  --font-utility:  'Inter', system-ui, sans-serif;
+
+  /* Type scale */
+  --fs-h1:      3rem;
+  --lh-h1:      3.5rem;
+  --fs-h2:      2rem;
+  --lh-h2:      2.5rem;
+  --fs-h3:      1.5rem;
+  --lh-h3:      2rem;
+  --fs-body:    1rem;
+  --lh-body:    1.625rem;
+  --fs-caption: 0.75rem;
+  --lh-caption: 1rem;
+
+  --fw-light:   300;
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-bold:    700;
+
+  --tracking-wide:   0.18em;
+  --tracking-normal: 0.01em;
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
+  --space-7: 4rem;
+  --space-8: 6rem;
+  --space-9: 8rem;
+
+  /* Layout */
+  --container-max: 1200px;
+  --container-pad: 1.5rem;
+
+  /* Radius */
+  --radius-none: 0;
+  --radius-sm:   2px;
+  --radius-md:   4px;
+
+  /* Signature marker */
+  --marker-height: 3px;
+  --marker-width:  40px;
+  --marker-color:  var(--color-orange);
+
+  /* Motion */
+  --ease-out:  cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast:  160ms;
+  --dur-base:  280ms;
+  --dur-slow:  520ms;
+
+  /* Shadow */
+  --shadow-sm: 0 1px 2px rgba(13, 24, 42, 0.06);
+  --shadow-md: 0 8px 24px rgba(13, 24, 42, 0.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur-base: 0ms;
+    --dur-slow: 0ms;
+  }
+}
+
+/* ============================================================
+   Tailwind v4 Theme Extension
+   ============================================================ */
+@theme {
+  --color-navy:        #0D182A;
+  --color-charcoal:    #262A30;
+  --color-accent:      #FF6A00;
+  --color-accent-hover:#E55F00;
+  --color-accent-gold: #FF9833;
+  --color-fc-slate:    #60666F;
+  --color-warm-gray:   #8A8F98;
+  --color-blue-gray:   #A9B2BE;
+  --color-steel:       #C7CCD3;
+  --color-cool:        #D6D9D0;
+  --color-subtle:      #F2F4F7;
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--bg-page);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: var(--fs-body);
+    line-height: var(--lh-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    color: var(--text-primary);
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  p { margin: 0; }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img, svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font: inherit;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+/* ============================================================
+   Utilities
+   ============================================================ */
+@layer utilities {
+  /* Layout */
+  .container-fc {
+    width: 100%;
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding-inline: var(--container-pad);
+  }
+
+  /* Orange signature marker */
+  .marker {
+    display: block;
+    width: var(--marker-width);
+    height: var(--marker-height);
+    background: var(--marker-color);
+    flex-shrink: 0;
+  }
+
+  /* Eyebrow label */
+  .eyebrow {
+    font-family: var(--font-utility);
+    font-size: var(--fs-caption);
+    font-weight: var(--fw-medium);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--accent);
+    line-height: var(--lh-caption);
+  }
+
+  .eyebrow-muted {
+    font-family: var(--font-utility);
+    font-size: var(--fs-caption);
+    font-weight: var(--fw-medium);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    line-height: var(--lh-caption);
+  }
+
+  /* Wordmark */
+  .wordmark {
+    font-family: var(--font-display);
+    font-weight: var(--fw-bold);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    background: var(--accent);
+    color: var(--text-on-dark);
+    font-family: var(--font-utility);
+    font-size: 0.875rem;
+    font-weight: var(--fw-medium);
+    letter-spacing: 0.04em;
+    border-radius: var(--radius-sm);
+    border: 2px solid var(--accent);
+    transition:
+      background var(--dur-fast) var(--ease-out),
+      border-color var(--dur-fast) var(--ease-out);
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    background: transparent;
+    color: var(--text-primary);
+    font-family: var(--font-utility);
+    font-size: 0.875rem;
+    font-weight: var(--fw-medium);
+    letter-spacing: 0.04em;
+    border-radius: var(--radius-sm);
+    border: 1.5px solid var(--text-primary);
+    transition:
+      background var(--dur-fast) var(--ease-out),
+      color var(--dur-fast) var(--ease-out);
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .btn-secondary:hover {
+    background: var(--text-primary);
+    color: var(--text-on-dark);
+  }
+
+  .btn-secondary-on-dark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    background: transparent;
+    color: var(--text-on-dark);
+    font-family: var(--font-utility);
+    font-size: 0.875rem;
+    font-weight: var(--fw-medium);
+    letter-spacing: 0.04em;
+    border-radius: var(--radius-sm);
+    border: 1.5px solid var(--text-on-dark);
+    transition:
+      background var(--dur-fast) var(--ease-out),
+      color var(--dur-fast) var(--ease-out);
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .btn-secondary-on-dark:hover {
+    background: var(--text-on-dark);
+    color: var(--text-primary);
+  }
+
+  /* Card */
+  .card {
+    background: var(--bg-page);
+    border: 1px solid var(--border-hairline);
+    border-radius: var(--radius-md);
+    padding: 2rem;
+    transition:
+      box-shadow var(--dur-base) var(--ease-out),
+      transform var(--dur-base) var(--ease-out);
+  }
+
+  .card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+  }
+
+  /* Hairline divider */
+  .hairline {
+    border: none;
+    border-top: 1px solid var(--border-hairline);
+    margin: 0;
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity var(--dur-slow) var(--ease-out),
+      transform var(--dur-slow) var(--ease-out);
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay-1 { transition-delay: 80ms; }
+  .reveal-delay-2 { transition-delay: 160ms; }
+  .reveal-delay-3 { transition-delay: 240ms; }
+  .reveal-delay-4 { transition-delay: 320ms; }
+  .reveal-delay-5 { transition-delay: 400ms; }
+
+  /* Footer link hover */
+  .footer-link {
+    color: var(--color-blue-gray);
+    transition: color var(--dur-fast) var(--ease-out);
+  }
+  .footer-link:hover {
+    color: var(--text-on-dark);
+  }
+
+  /* Section spacing */
+  .section-pad {
+    padding-block: var(--space-8);
+  }
+
+  .section-pad-lg {
+    padding-block: var(--space-9);
+  }
+}

@@ -1,0 +1,100 @@
+/* ============================================================
+   FORMCRAFT — Design Tokens
+   Brand Mantra: Craft from your trust.
+   Tagline: From Concept to Creation.
+   ============================================================ */
+
+:root {
+  /* ---------- Primary Colors ---------- */
+  --color-white:        #FFFFFF;
+  --color-light-gray:   #F2F4F7;
+  --color-cool-gray:    #D6D9D0;
+  --color-slate:        #60666F;
+  --color-deep-navy:    #0D182A;
+  --color-orange:       #FF6A00;
+
+  /* ---------- Secondary Colors ---------- */
+  --color-warm-gray:    #8A8F98;
+  --color-blue-gray:    #A9B2BE;
+  --color-steel:        #C7CCD3;
+  --color-charcoal:     #262A30;
+  --color-orange-gold:  #FF9833;
+
+  /* ---------- Semantic roles ---------- */
+  --bg-page:            var(--color-white);
+  --bg-subtle:          var(--color-light-gray);
+  --bg-dark:            var(--color-deep-navy);
+  --text-primary:       var(--color-deep-navy);
+  --text-secondary:     var(--color-slate);
+  --text-on-dark:       var(--color-white);
+  --border-hairline:    var(--color-cool-gray);
+  --accent:             var(--color-orange);
+  --accent-hover:       #E55F00;
+
+  /* ---------- Typography ---------- */
+  --font-display:  'Manrope', system-ui, sans-serif;
+  --font-body:     'Manrope', system-ui, sans-serif;
+  --font-utility:  'Inter', system-ui, sans-serif;
+
+  --fs-h1:    3rem;
+  --lh-h1:    3.5rem;
+  --fs-h2:    2rem;
+  --lh-h2:    2.5rem;
+  --fs-h3:    1.5rem;
+  --lh-h3:    2rem;
+  --fs-body:  1rem;
+  --lh-body:  1.6rem;
+  --fs-caption: 0.75rem;
+  --lh-caption: 1rem;
+
+  --fw-light:    300;
+  --fw-regular:  400;
+  --fw-medium:   500;
+  --fw-bold:     700;
+
+  --tracking-wide:    0.18em;
+  --tracking-normal:  0.01em;
+
+  /* ---------- Spacing scale ---------- */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  1rem;
+  --space-4:  1.5rem;
+  --space-5:  2rem;
+  --space-6:  3rem;
+  --space-7:  4rem;
+  --space-8:  6rem;
+  --space-9:  8rem;
+
+  /* ---------- Layout ---------- */
+  --container-max:  1200px;
+  --container-pad:  1.5rem;
+
+  /* ---------- Radius ---------- */
+  --radius-none:  0;
+  --radius-sm:    2px;
+  --radius-md:    4px;
+
+  /* ---------- Signature Marker ---------- */
+  --marker-height:  3px;
+  --marker-width:   40px;
+  --marker-color:   var(--color-orange);
+
+  /* ---------- Motion ---------- */
+  --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast:   160ms;
+  --dur-base:   280ms;
+  --dur-slow:   520ms;
+
+  /* ---------- Shadow ---------- */
+  --shadow-sm:  0 1px 2px rgba(13, 24, 42, 0.06);
+  --shadow-md:  0 8px 24px rgba(13, 24, 42, 0.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur-base: 0ms;
+    --dur-slow: 0ms;
+  }
+}
