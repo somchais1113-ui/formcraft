@@ -49,6 +49,15 @@ const attributes = [
   },
 ]
 
+const portfolio = [
+  { title: 'ชิ้นส่วนเครื่องจักร CNC', category: 'OEM Manufacturing' },
+  { title: 'อุปกรณ์จับยึดเฉพาะงาน', category: 'Custom Production' },
+  { title: 'ต้นแบบฝาครอบอลูมิเนียม', category: 'Prototyping' },
+  { title: 'แผงควบคุมสแตนเลส', category: 'OEM Manufacturing' },
+  { title: 'โครงสร้างรองรับสายพาน', category: 'Custom Production' },
+  { title: 'ชุดทดสอบคุณภาพ', category: 'Quality Control' },
+]
+
 const services = [
   {
     title: 'OEM Manufacturing',
@@ -87,6 +96,7 @@ export default function HomePage() {
         {/* Decorative blueprint grid */}
         <div
           aria-hidden="true"
+          className="hero-grid"
           style={{
             position: 'absolute',
             inset: 0,
@@ -101,6 +111,7 @@ export default function HomePage() {
         <div className="container-fc" style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ maxWidth: '760px' }}>
             <p
+              className="hero-fade-up"
               style={{
                 fontFamily: 'var(--font-utility)',
                 fontSize: 'var(--fs-caption)',
@@ -114,9 +125,10 @@ export default function HomePage() {
               PRECISION MANUFACTURING PARTNER
             </p>
 
-            <div style={{ marginBottom: 'var(--space-4)' }}>
+            <div className="hero-fade-up hero-fade-up-delay-1" style={{ marginBottom: 'var(--space-4)' }}>
               <span
                 aria-hidden="true"
+                className="hero-marker-pulse"
                 style={{
                   display: 'block',
                   width: '60px',
@@ -127,6 +139,7 @@ export default function HomePage() {
             </div>
 
             <h1
+              className="hero-fade-up hero-fade-up-delay-1"
               style={{
                 fontSize: 'clamp(2.25rem, 6vw, 4rem)',
                 lineHeight: 1.05,
@@ -140,6 +153,7 @@ export default function HomePage() {
             </h1>
 
             <p
+              className="hero-fade-up hero-fade-up-delay-2"
               style={{
                 fontSize: 'clamp(1.125rem, 2.5vw, 1.375rem)',
                 color: 'var(--color-blue-gray)',
@@ -151,6 +165,7 @@ export default function HomePage() {
             </p>
 
             <p
+              className="hero-fade-up hero-fade-up-delay-2"
               style={{
                 fontFamily: 'var(--font-utility)',
                 fontSize: 'var(--fs-caption)',
@@ -163,12 +178,15 @@ export default function HomePage() {
               From Concept to Creation. — จากความคิด สู่ของจริง
             </p>
 
-            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+            <div
+              className="hero-fade-up hero-fade-up-delay-3"
+              style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}
+            >
               <Link href="/contact" className="btn-primary">
                 ปรึกษางานผลิต
               </Link>
-              <Link href="/service" className="btn-secondary-on-dark">
-                ดูบริการ →
+              <Link href="/service" className="btn-secondary-on-dark link-arrow">
+                ดูบริการ <span className="link-arrow-glyph">→</span>
               </Link>
             </div>
           </div>
@@ -319,6 +337,7 @@ export default function HomePage() {
               <SectionHeading eyebrow="บริการของเรา" title="ความสามารถที่ครอบคลุม" />
               <Link
                 href="/service"
+                className="link-arrow"
                 style={{
                   fontFamily: 'var(--font-utility)',
                   fontSize: '0.875rem',
@@ -327,7 +346,7 @@ export default function HomePage() {
                   letterSpacing: '0.02em',
                 }}
               >
-                ดูบริการทั้งหมด →
+                ดูบริการทั้งหมด <span className="link-arrow-glyph">→</span>
               </Link>
             </div>
           </ScrollReveal>
@@ -363,6 +382,82 @@ export default function HomePage() {
                     {svc.desc}
                   </p>
                 </article>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── PORTFOLIO / GALLERY ──────────────────────────────── */}
+      <section className="section-pad" aria-label="Portfolio">
+        <div className="container-fc">
+          <ScrollReveal>
+            <SectionHeading eyebrow="ผลงานของเรา" title="งานที่เราภูมิใจนำเสนอ" />
+          </ScrollReveal>
+
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
+              gap: '1.5rem',
+              marginTop: 'var(--space-7)',
+            }}
+          >
+            {portfolio.map((item, i) => (
+              <ScrollReveal key={item.title} delay={(i % 5) as 0 | 1 | 2 | 3 | 4 | 5}>
+                <div className="gallery-item">
+                  <svg
+                    className="gallery-item-pattern"
+                    width="100%"
+                    height="100%"
+                    viewBox="0 0 200 150"
+                    preserveAspectRatio="xMidYMid slice"
+                    aria-hidden="true"
+                  >
+                    <rect width="200" height="150" fill="var(--color-deep-navy)" />
+                    <g stroke="var(--color-charcoal)" strokeWidth="1">
+                      {Array.from({ length: 9 }).map((_, n) => (
+                        <line key={`v${n}`} x1={n * 25} y1="0" x2={n * 25} y2="150" />
+                      ))}
+                      {Array.from({ length: 7 }).map((_, n) => (
+                        <line key={`h${n}`} x1="0" y1={n * 25} x2="200" y2={n * 25} />
+                      ))}
+                    </g>
+                    {i % 3 === 0 && (
+                      <circle cx="100" cy="75" r="38" fill="none" stroke="var(--color-orange)" strokeWidth="2" opacity="0.7" />
+                    )}
+                    {i % 3 === 1 && (
+                      <rect x="55" y="37" width="90" height="76" fill="none" stroke="var(--color-orange)" strokeWidth="2" opacity="0.7" />
+                    )}
+                    {i % 3 === 2 && (
+                      <path d="M55 113 L100 37 L145 113 Z" fill="none" stroke="var(--color-orange)" strokeWidth="2" opacity="0.7" />
+                    )}
+                  </svg>
+                  <div className="gallery-item-overlay">
+                    <p
+                      style={{
+                        fontFamily: 'var(--font-utility)',
+                        fontSize: 'var(--fs-caption)',
+                        fontWeight: 'var(--fw-medium)',
+                        letterSpacing: 'var(--tracking-wide)',
+                        textTransform: 'uppercase',
+                        color: 'var(--accent)',
+                        marginBottom: '0.375rem',
+                      }}
+                    >
+                      {item.category}
+                    </p>
+                    <p
+                      style={{
+                        fontSize: 'var(--fs-body)',
+                        fontWeight: 'var(--fw-medium)',
+                        color: 'var(--text-on-dark)',
+                      }}
+                    >
+                      {item.title}
+                    </p>
+                  </div>
+                </div>
               </ScrollReveal>
             ))}
           </div>

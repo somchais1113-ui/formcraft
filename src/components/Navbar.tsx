@@ -83,19 +83,12 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
+                className={`nav-link${active ? ' active' : ''}`}
                 style={{
                   fontFamily: 'var(--font-utility)',
                   fontSize: '0.875rem',
                   fontWeight: active ? 'var(--fw-medium)' : 'var(--fw-regular)',
-                  color: active ? 'var(--accent)' : 'var(--text-secondary)',
                   letterSpacing: '0.02em',
-                  transition: `color var(--dur-fast) var(--ease-out)`,
-                }}
-                onMouseEnter={(e) => {
-                  if (!active) (e.currentTarget as HTMLElement).style.color = 'var(--text-primary)'
-                }}
-                onMouseLeave={(e) => {
-                  if (!active) (e.currentTarget as HTMLElement).style.color = 'var(--text-secondary)'
                 }}
               >
                 {link.label}
