@@ -100,7 +100,8 @@
   }
 
   .hero-grid,
-  .hero-marker-pulse {
+  .hero-marker-pulse,
+  .hero-scroll-fill {
     animation: none !important;
   }
 }
@@ -522,16 +523,9 @@
   }
 
   /* Hero responsive layout */
-  .hero-product-col {
-    order: -1;
-  }
-
   @media (min-width: 768px) {
     .hero-grid-layout {
       grid-template-columns: 1fr 320px !important;
-    }
-    .hero-product-col {
-      order: 0;
     }
   }
 
@@ -554,53 +548,6 @@
     background: var(--bg-subtle) !important;
   }
 
-  /* Hero product showcase */
-  @keyframes product-spin {
-    from { transform: rotateY(0deg); }
-    to { transform: rotateY(360deg); }
-  }
-
-  @keyframes product-float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-14px); }
-  }
-
-  .hero-product-wrap {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .hero-product-glow {
-    position: absolute;
-    bottom: 6%;
-    left: 50%;
-    width: 70%;
-    height: 60px;
-    transform: translateX(-50%);
-    background: radial-gradient(closest-side, rgba(255, 106, 0, 0.55), transparent);
-    filter: blur(4px);
-    pointer-events: none;
-  }
-
-  .hero-product-float {
-    animation: product-float 4.5s var(--ease-out) infinite;
-  }
-
-  .hero-product-spin {
-    animation: product-spin 9s linear infinite;
-    transform-style: preserve-3d;
-    filter: drop-shadow(0 24px 32px rgba(0, 0, 0, 0.45));
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .hero-product-spin,
-    .hero-product-float {
-      animation: none !important;
-    }
-  }
-
   /* Hero marker pulse */
   @keyframes marker-pulse {
     0%, 100% { opacity: 1; }
@@ -609,6 +556,16 @@
 
   .hero-marker-pulse {
     animation: marker-pulse 2.4s var(--ease-out) infinite;
+  }
+
+  /* Hero scroll indicator */
+  @keyframes scroll-indicator {
+    0% { top: -100%; }
+    100% { top: 100%; }
+  }
+
+  .hero-scroll-fill {
+    animation: scroll-indicator 2s ease-in-out infinite;
   }
 
   .reveal-delay-1 { transition-delay: 80ms; }
