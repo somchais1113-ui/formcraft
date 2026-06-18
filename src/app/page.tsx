@@ -3,7 +3,7 @@ import SectionHeading from '@/components/SectionHeading'
 import ScrollReveal from '@/components/ScrollReveal'
 import Marker from '@/components/Marker'
 import ProductShowcase from '@/components/ProductShowcase'
-import HeroProduct from '@/components/HeroProduct'
+import HeroSection from '@/components/HeroSection'
 
 const journeySteps = [
   {
@@ -82,131 +82,7 @@ const services = [
 export default function HomePage() {
   return (
     <>
-      {/* ── HERO ─────────────────────────────────────────────── */}
-      <section
-        style={{
-          background: 'var(--bg-dark)',
-          minHeight: '100svh',
-          display: 'flex',
-          alignItems: 'center',
-          paddingBlock: 'var(--space-9)',
-          position: 'relative',
-          overflow: 'hidden',
-        }}
-        aria-label="Hero"
-      >
-        {/* Decorative blueprint grid */}
-        <div
-          aria-hidden="true"
-          className="hero-grid"
-          style={{
-            position: 'absolute',
-            inset: 0,
-            backgroundImage:
-              'linear-gradient(var(--color-charcoal) 1px, transparent 1px), linear-gradient(90deg, var(--color-charcoal) 1px, transparent 1px)',
-            backgroundSize: '60px 60px',
-            opacity: 0.5,
-            pointerEvents: 'none',
-          }}
-        />
-
-        <div
-          className="container-fc hero-grid-layout"
-          style={{
-            position: 'relative',
-            zIndex: 1,
-            display: 'grid',
-            gridTemplateColumns: '1fr',
-            gap: 'var(--space-7)',
-            alignItems: 'center',
-          }}
-        >
-          <div className="hero-text-col" style={{ maxWidth: '760px' }}>
-            <p
-              className="hero-fade-up"
-              style={{
-                fontFamily: 'var(--font-utility)',
-                fontSize: 'var(--fs-caption)',
-                fontWeight: 'var(--fw-medium)',
-                letterSpacing: 'var(--tracking-wide)',
-                textTransform: 'uppercase',
-                color: 'var(--accent)',
-                marginBottom: 'var(--space-3)',
-              }}
-            >
-              PRECISION MANUFACTURING PARTNER
-            </p>
-
-            <div className="hero-fade-up hero-fade-up-delay-1" style={{ marginBottom: 'var(--space-4)' }}>
-              <span
-                aria-hidden="true"
-                className="hero-marker-pulse"
-                style={{
-                  display: 'block',
-                  width: '60px',
-                  height: '3px',
-                  background: 'var(--marker-color)',
-                }}
-              />
-            </div>
-
-            <h1
-              className="hero-fade-up hero-fade-up-delay-1"
-              style={{
-                fontSize: 'clamp(2.75rem, 8vw, 5rem)',
-                lineHeight: 0.98,
-                fontWeight: 'var(--fw-bold)',
-                color: 'var(--text-on-dark)',
-                letterSpacing: '-0.02em',
-                textTransform: 'uppercase',
-                marginBottom: 'var(--space-3)',
-              }}
-            >
-              Craft from<br />your trust.
-            </h1>
-
-            <p
-              className="hero-fade-up hero-fade-up-delay-2"
-              style={{
-                fontSize: 'clamp(1.125rem, 2.5vw, 1.375rem)',
-                color: 'var(--color-blue-gray)',
-                marginBottom: 'var(--space-2)',
-                lineHeight: 1.5,
-              }}
-            >
-              เราคราฟต์ทุกงานขึ้นจากความไว้ใจของคุณ
-            </p>
-
-            <p
-              className="hero-fade-up hero-fade-up-delay-2"
-              style={{
-                fontFamily: 'var(--font-utility)',
-                fontSize: 'var(--fs-caption)',
-                letterSpacing: '0.08em',
-                color: 'var(--color-warm-gray)',
-                textTransform: 'uppercase',
-                marginBottom: 'var(--space-7)',
-              }}
-            >
-              From Concept to Creation. — จากความคิด สู่ของจริง
-            </p>
-
-            <div
-              className="hero-fade-up hero-fade-up-delay-3"
-              style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}
-            >
-              <Link href="/contact" className="btn-primary">
-                ปรึกษางานผลิต
-              </Link>
-              <Link href="/service" className="btn-secondary-on-dark link-arrow">
-                ดูบริการ <span className="link-arrow-glyph">→</span>
-              </Link>
-            </div>
-          </div>
-
-          <HeroProduct />
-        </div>
-      </section>
+      <HeroSection />
 
       {/* ── BRAND JOURNEY ────────────────────────────────────── */}
       <section
